@@ -45,4 +45,28 @@ public class Medication {
         this.quantity = quantity;
         this.expiry = expiry;
     }
+
+        /* Getters & Setters */
+
+    public Medication getMedication() {
+        return new Medication(this.ID, this.name, this.dosage, this.quantity, this.expiry);
+    }
+
+    public void setMedName(String name) {
+        this.name = name;
+    }
+
+    public void setMedDosage(int dosage) {
+        this.dosage = dosage;
+    }
+
+    public void setMedQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setMedExpiry(Date expiry) {
+        this.expiry = expiry;
+    }
+
+    /* Methods */
 }
