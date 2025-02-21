@@ -69,4 +69,8 @@ public class Medication {
     }
 
     /* Methods */
+
+    public String toString() {
+        return "ID: " + this.ID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.expiry;
+    }
 }
