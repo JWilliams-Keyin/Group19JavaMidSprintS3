@@ -25,7 +25,7 @@ public class Medication {
         this.name = "n/a";
         this.dosage = 1;
         this.quantity = 1;
-        this.expiry = new Date();
+        this.expiry = randomDate();
     }
 
     /* Input With Random Date*/
@@ -34,7 +34,7 @@ public class Medication {
         this.name = name;
         this.dosage = dosage;
         this.quantity = quantity;
-        this.expiry = new Date();
+        this.expiry = randomDate();
     }
 
     /* Input All */
@@ -70,6 +70,20 @@ public class Medication {
 
     /* Methods */
 
+        /* Random Date */
+    public Date randomDate() {
+        /* Define the range of years (2015 to 2030) */
+        long startMillis = new Date(115, 0, 1).getTime();
+        long endMillis = new Date(130, 11, 31).getTime();
+
+        /* Generate a random timestamp in milliseconds */
+        long randomMillis = startMillis + (long) ((endMillis - startMillis) * Math.random());
+
+        /* Convert milliseconds to a Date object & return */
+        return new Date(randomMillis);
+    }
+
+    /* toString Method*/
     public String toString() {
         return "ID: " + this.ID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.expiry;
     }
