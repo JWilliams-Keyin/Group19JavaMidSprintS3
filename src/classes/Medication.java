@@ -52,6 +52,22 @@ public class Medication {
         return new Medication(this.ID, this.name, this.dosage, this.quantity, this.expiry);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public int getDosage() {
+        return this.dosage;
+    }
+
+    public int getQuantity() {
+        return this.quantity;
+    }
+
+    public Date getExpiry() {
+        return this.expiry;
+    }
+
     public void setMedName(String name) {
         this.name = name;
     }
