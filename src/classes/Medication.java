@@ -1,11 +1,11 @@
 package classes;
 
 /* Author: Jack Williams */
-/* Date: February 20th - February 25th */
+/* Date: February 20th - February 26th */
 /* Description: This class allows the user to enter new medication objects.
 * Each medication has a unique ID, name, dosage amount, quantity in stock, and expiry date. */
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Medication {
 
@@ -15,7 +15,7 @@ public class Medication {
     private String name;
     private int dosage;
     private int quantity;
-    private Date medExpiry;
+    private LocalDate medExpiry;
 
     /* Constructors */
 
@@ -38,7 +38,7 @@ public class Medication {
     }
 
     /* Input All */
-    public Medication(int medID, String name, int dosage, int quantity, Date medExpiry) {
+    public Medication(int medID, String name, int dosage, int quantity, LocalDate medExpiry) {
         this.medID = medID;
         this.name = name;
         this.dosage = dosage;
@@ -68,7 +68,7 @@ public class Medication {
         return this.quantity;
     }
 
-    public Date getMedExpiry() {
+    public LocalDate getMedExpiry() {
         return this.medExpiry;
     }
 
@@ -88,26 +88,31 @@ public class Medication {
         this.quantity = quantity;
     }
 
-    public void setMedExpiry(Date medExpiry) {
+    public void setMedExpiry(LocalDate medExpiry) {
         this.medExpiry = medExpiry;
     }
 
     /* Methods */
 
     /* Random Date */
-    public Date randomDate() {
-        /* Define the range of years (2015 to 2030) */
-        long startMillis = new Date(115, 0, 1).getTime();
-        long endMillis = new Date(130, 11, 31).getTime();
+    public LocalDate randomDate() {
+        
+        /* Define the range of years (2015 - 2035) */
+        LocalDate startDate = LocalDate.of(2015, 1, 1);
+        LocalDate endDate = LocalDate.of(2035, 12, 31);
 
-        /* Generate a random timestamp in milliseconds */
-        long randomMillis = startMillis + (long) ((endMillis - startMillis) * Math.random());
+        /* Convert dates to epoch days */
+        long startEpochDay = startDate.toEpochDay();
+        long endEpochDay = endDate.toEpochDay();
 
-        /* Convert milliseconds to a Date object & return */
-        return new Date(randomMillis);
+        /* Generate a random epoch day */
+        long randomEpochDay = startEpochDay + (long) ((endEpochDay - startEpochDay + 1) * Math.random());
+
+        /* Convert back to LocalDate and return */
+        return LocalDate.ofEpochDay(randomEpochDay);
     }
 
-    /* toString Method*/
+    /* toString Method */
     public String toString() {
         return "ID: " + this.medID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.medExpiry;
     }
