@@ -11,7 +11,7 @@ public class Medication {
 
     /* Attributes */
 
-    private int ID;
+    private int medID;
     private String name;
     private int dosage;
     private int quantity;
@@ -21,7 +21,7 @@ public class Medication {
 
     /* Default */
     public Medication() {
-        this.ID = 0;
+        this.medID = 0;
         this.name = "n/a";
         this.dosage = 1;
         this.quantity = 1;
@@ -29,8 +29,8 @@ public class Medication {
     }
 
     /* Input With Random Date*/
-    public Medication(int ID, String name, int dosage, int quantity) {
-        this.ID = ID;
+    public Medication(int medID, String name, int dosage, int quantity) {
+        this.medID = medID;
         this.name = name;
         this.dosage = dosage;
         this.quantity = quantity;
@@ -38,8 +38,8 @@ public class Medication {
     }
 
     /* Input All */
-    public Medication(int ID, String name, int dosage, int quantity, Date medExpiry) {
-        this.ID = ID;
+    public Medication(int medID, String name, int dosage, int quantity, Date medExpiry) {
+        this.medID = medID;
         this.name = name;
         this.dosage = dosage;
         this.quantity = quantity;
@@ -49,7 +49,7 @@ public class Medication {
     /* Getters & Setters */
 
     public Medication getMedication() {
-        return new Medication(this.ID, this.name, this.dosage, this.quantity, this.medExpiry);
+        return new Medication(this.medID, this.name, this.dosage, this.quantity, this.medExpiry);
     }
 
     public String getName() {
@@ -101,6 +101,6 @@ public class Medication {
 
     /* toString Method*/
     public String toString() {
-        return "ID: " + this.ID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.medExpiry;
+        return "ID: " + this.medID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.medExpiry;
     }
 }
