@@ -73,22 +73,22 @@ public class Prescription {
         return this.prescExpiry;
     }
 
-    private void setPrescID(int prescID) {
+    public void setPrescID(int prescID) {
         this.prescID = prescID;
     }
 
-    private void setDoctor(Doctor Doctor) {
+    public void setDoctor(Doctor Doctor) {
         this.Doctor = Doctor;
     }
 
-    private void setPatient(Patient Patient) {
+    public void setPatient(Patient Patient) {
         this.Patient = Patient;
     }
 
-    private void setMedication(Medication Medication) {
+    public void setMedication(Medication Medication) {
         this.Medication = Medication;
     }
 
-    private void setPrescExpiry(Date prescExpiry) {
+    public void setPrescExpiry(Date prescExpiry) {
         this.prescExpiry = prescExpiry;
     }
