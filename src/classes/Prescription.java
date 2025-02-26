@@ -38,7 +38,7 @@ public class Prescription {
         this.prescExpiry = new Date();
     }
 
-    /* Enter all including date */
+    /* Enter all including expiry */
     public Prescription(int prescID, Doctor Doctor, Patient Patient, Medication Medication, Date prescExpiry) {
         this.prescID = prescID;
         this.Doctor = Doctor;
