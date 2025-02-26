@@ -52,6 +52,10 @@ public class Medication {
         return new Medication(this.medID, this.name, this.dosage, this.quantity, this.medExpiry);
     }
 
+    public int getMedID() {
+        return this.medID;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -66,6 +70,10 @@ public class Medication {
 
     public Date getMedExpiry() {
         return this.medExpiry;
+    }
+
+    public void setMedID(int medID) {
+        this.medID = medID;
     }
 
     public void setMedName(String name) {
