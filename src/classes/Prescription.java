@@ -46,5 +46,49 @@ public class Prescription {
         this.Medication = Medication;
         this.prescExpiry = prescExpiry;
     }
-}
 
+    /* Getters & Setters */
+
+    public Prescription getPrescription() {
+        return new Prescription(this.prescID, this.Doctor, this.Patient, this.Medication, this.prescExpiry);
+    }
+
+    public int getPrescID() {
+        return this.prescID;
+    }
+
+    public Doctor getDoctor() {
+        return this.Doctor;
+    }
+
+    public Patient getPatient() {
+        return this.Patient;
+    }
+
+    public Medication getMedication() {
+        return this.Medication;
+    }
+
+    public Date getPrescExpiry() {
+        return this.prescExpiry;
+    }
+
+    private void setPrescID(int prescID) {
+        this.prescID = prescID;
+    }
+
+    private void setDoctor(Doctor Doctor) {
+        this.Doctor = Doctor;
+    }
+
+    private void setPatient(Patient Patient) {
+        this.Patient = Patient;
+    }
+
+    private void setMedication(Medication Medication) {
+        this.Medication = Medication;
+    }
+
+    private void setPrescExpiry(Date prescExpiry) {
+        this.prescExpiry = prescExpiry;
+    }
