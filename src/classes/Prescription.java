@@ -92,3 +92,9 @@ public class Prescription {
     public void setPrescExpiry(Date prescExpiry) {
         this.prescExpiry = prescExpiry;
     }
+
+    /* Methods */
+
+    public String toString() {
+        return "ID: " + this.prescID + " Doctor: " + this.Doctor + " Patient: " + this.Patient + " Medication: " + this.Medication + " Prescription Expiry: " + this.prescExpiry;
+    }
