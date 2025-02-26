@@ -1,7 +1,7 @@
 package classes;
 
 /* Author: Jack Williams */
-/* Date: February 20th - February */
+/* Date: February 20th - February 25th */
 /* Description: This class allows the user to enter new medication objects.
 * Each medication has a unique ID, name, dosage amount, quantity in stock, and expiry date. */
 
@@ -15,7 +15,7 @@ public class Medication {
     private String name;
     private int dosage;
     private int quantity;
-    private Date expiry;
+    private Date medExpiry;
 
     /* Constructors */
 
@@ -25,7 +25,7 @@ public class Medication {
         this.name = "n/a";
         this.dosage = 1;
         this.quantity = 1;
-        this.expiry = randomDate();
+        this.medExpiry = randomDate();
     }
 
     /* Input With Random Date*/
@@ -34,22 +34,22 @@ public class Medication {
         this.name = name;
         this.dosage = dosage;
         this.quantity = quantity;
-        this.expiry = randomDate();
+        this.medExpiry = randomDate();
     }
 
     /* Input All */
-    public Medication(int ID, String name, int dosage, int quantity, Date expiry) {
+    public Medication(int ID, String name, int dosage, int quantity, Date medExpiry) {
         this.ID = ID;
         this.name = name;
         this.dosage = dosage;
         this.quantity = quantity;
-        this.expiry = expiry;
+        this.medExpiry = medExpiry;
     }
 
-        /* Getters & Setters */
+    /* Getters & Setters */
 
     public Medication getMedication() {
-        return new Medication(this.ID, this.name, this.dosage, this.quantity, this.expiry);
+        return new Medication(this.ID, this.name, this.dosage, this.quantity, this.medExpiry);
     }
 
     public String getName() {
@@ -64,8 +64,8 @@ public class Medication {
         return this.quantity;
     }
 
-    public Date getExpiry() {
-        return this.expiry;
+    public Date getMedExpiry() {
+        return this.medExpiry;
     }
 
     public void setMedName(String name) {
@@ -80,13 +80,13 @@ public class Medication {
         this.quantity = quantity;
     }
 
-    public void setMedExpiry(Date expiry) {
-        this.expiry = expiry;
+    public void setMedExpiry(Date medExpiry) {
+        this.medExpiry = medExpiry;
     }
 
     /* Methods */
 
-        /* Random Date */
+    /* Random Date */
     public Date randomDate() {
         /* Define the range of years (2015 to 2030) */
         long startMillis = new Date(115, 0, 1).getTime();
@@ -101,6 +101,6 @@ public class Medication {
 
     /* toString Method*/
     public String toString() {
-        return "ID: " + this.ID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.expiry;
+        return "ID: " + this.ID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.medExpiry;
     }
 }
