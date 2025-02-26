@@ -1,12 +1,12 @@
 package classes;
 
 /* Author: Jack Williams */
-/* Date: February 26th - February */
+/* Date: February 26th */
 /* Description: This class allows the user to enter new prescription objects.
  * Each prescription has an ID along with references to the doctor that issued it, the patient
  * it is for, the medication issued, and the expiry date of the prescription. */
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Prescription {
 
@@ -16,7 +16,7 @@ public class Prescription {
     private Patient Patient;
     private Doctor Doctor;
     private Medication Medication;
-    private Date prescExpiry;
+    private LocalDate prescExpiry;
 
     /* Constructors */
 
@@ -26,7 +26,7 @@ public class Prescription {
         this.Doctor = new Doctor("0", "Bob Placeholder", 0, "00000000", "0", "n/a", 0);
         this.Patient = new Patient("0", "Pam Placeholder", 0, "00000000", "0", "none", "n/a");
         this.Medication = new Medication();
-        this.prescExpiry = new Date();
+        this.prescExpiry = defaultDate();
     }
 
     /* Enter all except expiry */
@@ -35,11 +35,11 @@ public class Prescription {
         this.Doctor = Doctor;
         this.Patient = Patient;
         this.Medication = Medication;
-        this.prescExpiry = new Date();
+        this.prescExpiry = defaultDate();
     }
 
     /* Enter all including expiry */
-    public Prescription(int prescID, Doctor Doctor, Patient Patient, Medication Medication, Date prescExpiry) {
+    public Prescription(int prescID, Doctor Doctor, Patient Patient, Medication Medication, LocalDate prescExpiry) {
         this.prescID = prescID;
         this.Doctor = Doctor;
         this.Patient = Patient;
@@ -69,7 +69,7 @@ public class Prescription {
         return this.Medication;
     }
 
-    public Date getPrescExpiry() {
+    public LocalDate getPrescExpiry() {
         return this.prescExpiry;
     }
 
@@ -89,12 +89,24 @@ public class Prescription {
         this.Medication = Medication;
     }
 
-    public void setPrescExpiry(Date prescExpiry) {
+    public void setPrescExpiry(LocalDate prescExpiry) {
         this.prescExpiry = prescExpiry;
     }
 
     /* Methods */
 
+    /* defaultDate Method*/
+    public LocalDate defaultDate() {
+
+        /* Get the current date */
+        LocalDate currentDate = LocalDate.now();
+
+        /* Add a year to the current date & return*/
+        return currentDate.plusYears(1);
+    }
+
+    /* toString Method */
     public String toString() {
         return "ID: " + this.prescID + " Doctor: " + this.Doctor + " Patient: " + this.Patient + " Medication: " + this.Medication + " Prescription Expiry: " + this.prescExpiry;
     }
+}
