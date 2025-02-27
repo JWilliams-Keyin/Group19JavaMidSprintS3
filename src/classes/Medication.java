@@ -1,11 +1,12 @@
 package classes;
 
 /* Author: Jack Williams */
-/* Date: February 20th - February 26th */
+/* Date: February 20th - February 27th */
 /* Description: This class allows the user to enter new medication objects.
 * Each medication has a unique ID, name, dosage amount, quantity in stock, and expiry date. */
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Medication {
 
@@ -96,7 +97,6 @@ public class Medication {
 
     /* Random Date */
     public LocalDate randomDate() {
-        
         /* Define the range of years (2015 - 2035) */
         LocalDate startDate = LocalDate.of(2015, 1, 1);
         LocalDate endDate = LocalDate.of(2035, 12, 31);
@@ -112,7 +112,17 @@ public class Medication {
         return LocalDate.ofEpochDay(randomEpochDay);
     }
 
-    /* toString Method */
+    /* Input Date Method */
+    /* This method is needed when calling the last constructor, as this is the only way to input a LocalDate value */
+    public LocalDate inputDate(String newDate) {
+        /* Create formatter to make the input follow yyyy/MM/dd format*/
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+        /* Parse the desired date (newDate), format it to a LocalDate value & return */
+        return LocalDate.parse(newDate, dateFormat);
+    }
+
+    /* toString Method*/
     public String toString() {
         return "ID: " + this.medID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.medExpiry;
     }
