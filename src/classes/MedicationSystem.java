@@ -3,11 +3,12 @@ Description: MedicationSystem class is the coordinator for the Pharmacy Manageme
              System. It synthesizes data from patients, doctors, medications and
              prescriptions to provide the requested outputs.
 Author: D.C. Elliott
-Date: Feb 25-26, 2025
+Date: Feb 25-27, 2025
 */
 
 package classes;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
@@ -63,7 +64,7 @@ public class MedicationSystem {
 
     public Doctor searchDoctorName(String name) {
         for (Doctor doctor : doctorList) {
-            if (doctor.getname().equalsIgnoreCase(name)) {
+            if (doctor.getName().equalsIgnoreCase(name)) {
                 return doctor;
             }
         }
@@ -77,7 +78,7 @@ public class MedicationSystem {
                 return medication;
             }
         }
-        System.out.printLn("Medication not found: " + name);
+        System.out.println("Medication not found: " + name);
         return null;
     }
 
@@ -109,7 +110,7 @@ public class MedicationSystem {
                 return medication;
             }
         }
-        System.out.printLn("Medication not found: " + id);
+        System.out.println("Medication not found: " + id);
         return null;
     }
 
@@ -119,7 +120,7 @@ public class MedicationSystem {
                 return prescription;
             }
         }
-        System.out.printLn("Prescription not found: " + id);
+        System.out.println("Prescription not found: " + id);
         return null;
     }
 
@@ -134,7 +135,7 @@ public class MedicationSystem {
             }
         }
         patientList.add(patient);
-        System.out.printLn("Patient added successfully: " + patient.getName());
+        System.out.println("Patient added successfully: " + patient.getName());
         return true;
     }
 
@@ -176,7 +177,7 @@ public class MedicationSystem {
             }
         }
         doctorList.add(doctor);
-        System.out.printLn("Doctor added successfully: " + doctor.getName());
+        System.out.println("Doctor added successfully: " + doctor.getName());
         return true;
     }
 
@@ -326,10 +327,43 @@ public class MedicationSystem {
 
 // Restock Medication Inventory
 
+    public void restockMedications() {
+        for (Medication medication:medicationList) {
+            int currentQuantity = medication.getQuantity();
+            int targetStock = medication.getTargetQuantity();
+            if (targetStock-currentQuantity<0.5*targetStock) {
+                medication.setQuanity = targetStock;
+                System.out.println(medication.getName() + " restocked with additional " + targetStock-currentQuantity + " units.");
+            } System.out.println(medication.getName() + " was not restocked at this time.");
+        }
+    }
 
 
+//System Report
 
+    public void systemReport() {
+        System.out.println("PHARMACY MANAGEMENT SYSTEM REPORT \n");
 
+        System.out.println("PATIENT LIST: \n");
+        for (Patient patient:patientList) {
+            System.out.println(patient.toString());
+        }
+
+        System.out.println("\n DOCTOR LIST: \n");
+        for (Doctor doctor:doctorList) {
+            System.out.println(doctor.toString());
+        }
+
+        System.out.println("\n MEDICATION LIST: \n");
+        for (Medication medication:medicationList){
+            System.out.println(medication.toString());
+        }
+
+        System.out.println("\n PRESCRIPTION LIST: \n");
+        for (Prescription prescription:prescriptionList) {
+            System.out.println(prescription.toString());
+    }
+    }
 
 
 
