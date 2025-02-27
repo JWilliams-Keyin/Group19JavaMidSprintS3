@@ -28,7 +28,26 @@ public class MedicationSystem {
         this.prescriptionList = new ArrayList<>();
     }
 
+//Getters
+
+    public ArrayList<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public ArrayList<Doctor> getDoctorList() {
+        return doctorList;
+    }
+
+    public ArrayList<Medication> getMedicationList() {
+        return medicationList;
+    }
+
+    public ArrayList<Prescription> getPrescriptionList() {
+        return prescriptionList;
+    }
+
 //Methods
+
 // Search functions
 // Search by name
 
@@ -94,8 +113,19 @@ public class MedicationSystem {
         return null;
     }
 
+    public Prescription searchPrescriptionId(int id) {
+        for (Prescription prescription : prescriptionList) {
+            if (Prescription.getId().equalsIgnoreCase(id)) {
+                return prescription;
+            }
+        }
+        System.out.printLn("Prescription not found: " + id);
+        return null;
+    }
+
 // Edit functions
 // Add/Edit/Remove patient
+
     public boolean addPatient(Patient patient) {
         for (Patient existingPatient:patientList){
             if (existingPatient.getId().equals(patient.getId())) {
@@ -137,6 +167,7 @@ public class MedicationSystem {
     }
 
 // Add/Edit/Remove doctor
+
     public boolean addDoctor(Doctor doctor) {
         for (Doctor existingDoctor:doctorList){
             if (existingDoctor.getId().equals(doctor.getId())) {
@@ -232,6 +263,76 @@ public class MedicationSystem {
             System.out.println("Neither doctor or patient found.");
         }
     }
+
+// Add a prescription
+
+    public void addNewPrescription(int doctorId, int patientId, int medicationId) {
+        Doctor doctor = searchDoctorId(doctorId);
+        Patient patient = searchPatientId(patientId);
+        Medication medication = searchMedicationId(medicationId);
+
+        if (doctor != void && patient != void && medication != void) {
+            int newId = prescriptionList.size()+1;
+            Prescription prescription = new Prescription(newId, doctor, patient, medication);
+
+            prescriptionList.add(prescription);
+            patient.addPrescription(prescription);
+            System.out.println("New prescription created and added.")
+        }
+        System.out.println("New Prescription not added, check inputs.");
+    }
+
+
+// Find all prescriptions issued by a specific doctor.
+
+    public void prescriptionListByDoctor(String doctorId) {
+        Doctor doctor = searchDoctorId(doctorId);
+
+        if (doctor != null) {
+            System.out.println("PRESCRIPTIONS ISSUED BY DR. " + doctor.getName() + ":");
+
+            boolean found = false;
+            for ( Prescription prescription:prescriptionList) {
+                if (prescription.getDoctor().getId().equals(doctorId)) {
+                    System.out.println(prescription.toString());
+                    found = true;
+                }
+            }
+            if (found == false) {
+                System.out.println("No prescriptions issued by Dr. " + doctor.getName());
+            }
+            System.out.println("END OF REPORT");
+        }System.out.println("Doctor not found with ID: " + doctorId);
+    }
+
+//Check for expired medications
+
+    public void checkExpiredMedications() {
+        System.out.println("EXPIRED MEDICATIONS REPORT");
+        LocalDate currentDate = LocalDate.now();
+        boolean expiredMed = false;
+
+        for (Medication medication:medicationList) {
+            if (medication.getMedExpiry.before(currentDate)) {
+                System.out.println("EXPIRED: " + medication.toString());
+                expiredMed = true;
+            }
+        }
+        if (expiredMed == false) {
+            System.out.println("NO EXPIRED MEDICATIONS FOUND.");
+        }
+        System.out.println("\n END OF REPORT");
+    }
+
+// Restock Medication Inventory
+
+
+
+
+
+
+
+
 }
 
 
