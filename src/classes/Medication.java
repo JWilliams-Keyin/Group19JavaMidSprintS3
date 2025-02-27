@@ -16,6 +16,7 @@ public class Medication {
     private String name;
     private int dosage;
     private int quantity;
+    private int targetQuantity;
     private LocalDate medExpiry;
 
     /* Constructors */
@@ -26,11 +27,12 @@ public class Medication {
         this.name = "n/a";
         this.dosage = 1;
         this.quantity = 1;
+        this.targetQuantity = 3;
         this.medExpiry = randomDate();
     }
 
     /* Input With Random Date*/
-    public Medication(int medID, String name, int dosage, int quantity) {
+    public Medication(int medID, String name, int dosage, int quantity, int targetQuantity) {
         this.medID = medID;
         this.name = name;
         this.dosage = dosage;
@@ -39,7 +41,7 @@ public class Medication {
     }
 
     /* Input All */
-    public Medication(int medID, String name, int dosage, int quantity, LocalDate medExpiry) {
+    public Medication(int medID, String name, int dosage, int quantity, int targetQuantity, LocalDate medExpiry) {
         this.medID = medID;
         this.name = name;
         this.dosage = dosage;
@@ -50,7 +52,7 @@ public class Medication {
     /* Getters & Setters */
 
     public Medication getMedication() {
-        return new Medication(this.medID, this.name, this.dosage, this.quantity, this.medExpiry);
+        return new Medication(this.medID, this.name, this.dosage, this.quantity, this.targetQuantity, this.medExpiry);
     }
 
     public int getMedID() {
@@ -67,6 +69,10 @@ public class Medication {
 
     public int getQuantity() {
         return this.quantity;
+    }
+
+    public int getTargetQuantity() {
+        return this.targetQuantity;
     }
 
     public LocalDate getMedExpiry() {
@@ -87,6 +93,10 @@ public class Medication {
 
     public void setMedQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setMedTargetQuantity(int targetQuantity) {
+        this.targetQuantity = targetQuantity;
     }
 
     public void setMedExpiry(LocalDate medExpiry) {
@@ -120,6 +130,14 @@ public class Medication {
 
         /* Parse the desired date (newDate), format it to a LocalDate value & return */
         return LocalDate.parse(newDate, dateFormat);
+    }
+
+    /* Restock Method */
+    public void restock() {
+        /* If the quantity of med is lower than target quantity, restock the difference */
+        if (this.quantity < this.targetQuantity) {
+            this.quantity += (this.targetQuantity - this.quantity);
+        }
     }
 
     /* toString Method*/
