@@ -8,7 +8,7 @@ public class Doctor extends Person {
     private ArrayList<Patient> patients;
 
 
-    public Doctor(int id, String name, int age, String phoneNumber, String doctorId, String specialization, int yearsOfExperience) {
+    public Doctor(int id, String name, int age, String phoneNumber, String specialization, int yearsOfExperience) {
         super(id, name, age, phoneNumber); // Calls Person constructor
         this.specialization = specialization;
         this.yearsOfExperience = yearsOfExperience;
@@ -38,7 +38,7 @@ public class Doctor extends Person {
     public void addPatient(Patient patient) {
         if (!patients.contains(patient)) {
             patients.add(patient);
-            System.out.println(patient.getName() + " has been added to Dr. " + getName());
+            //System.out.println(patient.getName() + " has been added to Dr. " + getName());
         }else {
             System.out.println(patient.getName() + " is already a patient of Dr. " + getName());
         }
@@ -46,7 +46,7 @@ public class Doctor extends Person {
 
     public void deletePatient(Patient patient) {
         if (patients.remove(patient)) {
-            System.out.println(patient.getName() + " has been removed from the patient list of Dr. " + getName());
+           // System.out.println(patient.getName() + " has been removed from the patient list of Dr. " + getName());
         }else {
             System.out.println(patient.getName() + " is not a patient of Dr. " + getName());
         }
@@ -68,6 +68,10 @@ public class Doctor extends Person {
                 System.out.println(" - " + patient.getName() + " (ID: " + patient.getId() + ")");
             }
         }
+    }
+
+    public String toString() {
+        return "ID: " + this.getId() + " Name: " + this.getName() + " Age: " + this.getAge() + " Phone Number: " + this.getPhoneNumber() + " Specialization: " + specialization + " Years of Experience: " + yearsOfExperience;
     }
 }
 

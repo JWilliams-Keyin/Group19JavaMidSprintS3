@@ -130,12 +130,10 @@ public class MedicationSystem {
     public boolean addPatient(Patient patient) {
         for (Patient existingPatient:patientList){
             if (existingPatient.getId() == patient.getId()) {
-                System.out.println("Patient already exists with ID: " + patient.getId());
                 return false;
             }
         }
         patientList.add(patient);
-        System.out.println("Patient added successfully: " + patient.getName());
         return true;
     }
 
@@ -147,8 +145,6 @@ public class MedicationSystem {
             patient.setPhoneNumber(phoneNumber);
             patient.setMedicalHistory(medicalHistory);
             patient.setAllergies(allergies);
-           // patient.setMedications(medication);
-           // patient.setPrescriptions(prescription);
             System.out.println("Patient information updated.");
             return true;
         }
@@ -160,10 +156,8 @@ public class MedicationSystem {
         Patient patient = searchPatientId(id);
         if (patient != null) {
             patientList.remove(patient);
-            System.out.println("Patient deleted.");
             return true;
         }
-        System.out.println("Patient not found for deletion.");
         return false;
     }
 
@@ -172,12 +166,10 @@ public class MedicationSystem {
     public boolean addDoctor(Doctor doctor) {
         for (Doctor existingDoctor:doctorList){
             if (existingDoctor.getId() == doctor.getId()) {
-                System.out.println("Doctor already exists with ID: " + doctor.getId());
                 return false;
             }
         }
         doctorList.add(doctor);
-        System.out.println("Doctor added successfully: " + doctor.getName());
         return true;
     }
 
@@ -189,7 +181,6 @@ public class MedicationSystem {
             doctor.setPhoneNumber(phoneNumber);
             doctor.setSpecialization(specialization);
             doctor.setYearsOfExperience(yearsOfExperience);
-            // doctor.setPatient(patients);
             System.out.println("Doctor information updated.");
             return true;
         }
@@ -212,12 +203,10 @@ public class MedicationSystem {
     public boolean addMedication(Medication medication) {
         for (Medication existingMedication:medicationList){
             if (existingMedication.getMedID() == medication.getMedID()) {
-                System.out.println("Medication already exists with ID: " + medication.getMedID());
                 return false;
             }
         }
         medicationList.add(medication);
-        System.out.println("Medication added successfully: " + medication.getName());
         return true;
     }
 
@@ -228,10 +217,8 @@ public class MedicationSystem {
             medication.setMedDosage(dosage);
             medication.setMedQuantity(quantity);
             medication.setMedExpiry(medExpiry);
-            System.out.println("Medication information updated.");
             return true;
         }
-        System.out.println("Medication not found.");
         return false;
     }
 
@@ -239,10 +226,8 @@ public class MedicationSystem {
         Medication medication =searchMedicationId(id);
         if (medication != null) {
             medicationList.remove(medication);
-            System.out.println("Medication deleted.");
             return true;
         }
-        System.out.println("Medication not found for deletion.");
         return false;
     }
 
@@ -255,7 +240,7 @@ public class MedicationSystem {
 
         if (patient != null && doctor != null) {
             doctor.addPatient(patient);
-            System.out.println(patient.getName() + "has been added to the patient list of Dr. " + doctor.getName());
+            System.out.println(patient.getName() + " has been added to the patient list of Dr. " + doctor.getName());
         }else if (patient == null && doctor != null) {
             System.out.println("Patient not found.");
         }else if (patient != null && doctor == null){
@@ -273,16 +258,16 @@ public class MedicationSystem {
         Medication medication = searchMedicationId(medicationId);
 
         if (doctor != null && patient != null && medication != null) {
-            int newId = prescriptionList.size()+1;
+            int newId = prescriptionList.size() + 1;
             Prescription prescription = new Prescription(newId, doctor, patient, medication);
 
             prescriptionList.add(prescription);
             patient.addPrescription(prescription);
-            System.out.println("New prescription created and added.");
+            System.out.println("Operation successful.");
+        } else {
+            System.out.println("New Prescription not added, check inputs.");
         }
-        System.out.println("New Prescription not added, check inputs.");
     }
-
 
 // Find all prescriptions issued by a specific doctor.
 
@@ -332,10 +317,12 @@ public class MedicationSystem {
             int currentQuantity = medication.getQuantity();
             int targetStock = medication.getTargetQuantity();
             String name = medication.getName();
-            if (targetStock-currentQuantity<0.5*targetStock) {
+            if (currentQuantity<0.5*targetStock) {
                 medication.setMedQuantity(targetStock);
                 System.out.println(name + " restocked with additional " + (targetStock-currentQuantity) + " units.");
-            } System.out.println(medication.getName() + " was not restocked at this time.");
+            } else {
+                System.out.println(name + " was not restocked at this time.");
+            }
         }
     }
 

@@ -8,7 +8,7 @@ public class Patient extends Person {
     private ArrayList<Medication> medications;
     private ArrayList<Prescription> prescriptions;
 
-    public Patient(int id, String name, int age, String phoneNumber, String patientId, String medicalHistory, String allergies) {
+    public Patient(int id, String name, int age, String phoneNumber, String medicalHistory, String allergies) {
         super(id, name, age, phoneNumber);
         this.medicalHistory = medicalHistory;
         this.allergies = allergies;
@@ -61,7 +61,7 @@ public class Patient extends Person {
     public void addPrescription(Prescription prescription) {
         if (!prescriptions.contains(prescription)) {
             prescriptions.add(prescription);
-            System.out.println(prescription.getPrescID() + " has been added to the prescription list of " + getName());
+            System.out.println("Prescription ID " + prescription.getPrescID() + " has been added to the prescription list of " + getName());
         }else {
             System.out.println(prescription.getPrescID() + " is already on the prescription list of " + getName());
         }
@@ -93,6 +93,10 @@ public class Patient extends Person {
                 System.out.println(" - " + medication.getName() + " (ID: " + medication.getMedID() + ")");
             }
         }
+    }
+
+    public String toString() {
+        return "ID: " + this.getId() + " Name: " + this.getName() + " Age: " + this.getAge() + " Phone Number: " + this.getPhoneNumber() + " Medical History: " + medicalHistory + " Allergies: " + allergies;
     }
 }
 

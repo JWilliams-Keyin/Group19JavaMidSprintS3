@@ -23,8 +23,8 @@ public class Prescription {
     /* Default */
     public Prescription() {
         this.prescID = 0;
-        this.Doctor = new Doctor(0, "Bob Placeholder", 0, "00000000", "0", "n/a", 0);
-        this.Patient = new Patient(0, "Pam Placeholder", 0, "00000000", "0", "none", "n/a");
+        this.Doctor = new Doctor(0, "Bob Placeholder", 0, "00000000", "n/a", 0);
+        this.Patient = new Patient(0, "Pam Placeholder", 0, "00000000", "n/a", "n/a");
         this.Medication = new Medication();
         this.prescExpiry = defaultDate();
     }

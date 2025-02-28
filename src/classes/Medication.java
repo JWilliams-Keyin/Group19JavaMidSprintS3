@@ -37,6 +37,7 @@ public class Medication {
         this.name = name;
         this.dosage = dosage;
         this.quantity = quantity;
+        this.targetQuantity = targetQuantity;
         this.medExpiry = randomDate();
     }
 
@@ -46,6 +47,7 @@ public class Medication {
         this.name = name;
         this.dosage = dosage;
         this.quantity = quantity;
+        this.targetQuantity = targetQuantity;
         this.medExpiry = medExpiry;
     }
 
@@ -133,15 +135,15 @@ public class Medication {
     }
 
     /* Restock Method */
-    public void restock() {
+    //public void restock() {
         /* If the quantity of med is lower than target quantity, restock the difference */
-        if (this.quantity < this.targetQuantity) {
-            this.quantity += (this.targetQuantity - this.quantity);
-        }
-    }
+       // if (this.quantity < this.targetQuantity) {
+        //    this.quantity += (this.targetQuantity - this.quantity);
+       // }
+   // }
 
     /* toString Method*/
     public String toString() {
-        return "ID: " + this.medID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Expiry Date: " + this.medExpiry;
+        return "ID: " + this.medID + " Name: " + this.name + " Dosage: " + this.dosage + " Quantity: " + this.quantity + " Inventory Target: " + this.targetQuantity + " Expiry Date: " + this.medExpiry;
     }
 }
